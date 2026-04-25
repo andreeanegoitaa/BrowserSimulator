@@ -1,6 +1,20 @@
- Am explicat functiile mai lungi si in cod, dar nu pe toate.
- Punctajul pe checkerul local este 100/100 si 20/20 pe Valgrind.
- 
+# Browser Simulator
+
+Browser Simulator este un proiect dezvoltat în limbajul C care emulează funcționalitățile de bază ale unui browser web folosind structuri de date fundamentale.
+
+Acest program gestionează o interfață cu mai multe tab-uri și permite navigarea prin istoricul paginilor, oferind o simulare precisă a modului în care un browser real alocă memoria și procesează comenzile utilizatorului. Punctajul obținut la testarea automată este 100/100, alături de un scor perfect de 20/20 pe Valgrind, demonstrând o gestionare robustă a memoriei, fără scurgeri (memory leaks).
+
+## Concepte Cheie și Structuri de Date Utilizate
+Pentru a implementa funcționalitățile browserului, arhitectura proiectului se bazează pe următoarele structuri de date:
+
+* Lista Dublu Înlănțuită Circulară (cu santinelă): Folosită pentru gestionarea eficientă a tab-urilor deschise. Permite navigarea rapidă între tab-ul curent, cel anterior (PREV) și cel următor (NEXT), precum și închiderea sau deschiderea de noi tab-uri în timp real constant (unde este posibil).
+
+* Stive (Stacks): Fiecare tab deține propriile stive pentru istoricul de navigare (Back și Forward). Acestea facilitează operațiile de BACKWARD și FORWARD specifice navigării web.
+
+* Alocare Dinamică: Gestionarea atentă a memoriei pentru crearea paginilor, a nodurilor din listă/stive și eliberarea completă a acestora la închiderea programului sau a tab-urilor individuale.
+
+În secțiunile de mai jos se găsește o descriere detaliată a modului de implementare pentru fiecare modul și comandă în parte.
+
  ## structuri.h
  Aici am definit toate structurile utilizate. Am folosit '#pragma once' ca sa fie procesate o singura data si am pus si 'typedef' pt fiecare structura ca sa nu repet mereu in cod 'struct ...'
 
